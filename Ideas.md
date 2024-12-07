@@ -1,4 +1,4 @@
-# Idea
+# Ideas
 
 
 
