@@ -6,6 +6,10 @@
 
 **diffusion policy 原版是<u>*离线训练*</u>的。**
 
+**双层diffusion：**
+   - 高层diffusion
+   - 低层diffusion
+
 
 ------
 ### **diffusion policy 需要记录的数据**
