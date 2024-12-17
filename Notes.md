@@ -1,6 +1,8 @@
 ## CREATE SSH KEY:
 ```
 ls -al ~/.ssh
+```
+```
 ssh-keygen -t ed25519 -C "yichatma@gmail.com"
 ```
 ```
