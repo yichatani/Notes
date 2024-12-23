@@ -8,3 +8,9 @@ ssh-keygen -t ed25519 -C "yichatma@gmail.com"
 ```
 cat ~/.ssh/id_ed25519.pub
 ```
+
+## TEST SSH CONNECTION
+```
+ssh -T git@github.com
+```
+
