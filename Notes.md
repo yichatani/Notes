@@ -27,3 +27,16 @@ ssh-add ~/.ssh/id_ed25519
 ssh -vT git@github.com
 ```
 
+## github上传大于100mb文件
+```sh
+# 使用 Git LFS
+sudo apt-get install git-lfs
+```
+```sh
+git lfs install
+git lfs track "*.zip"
+git add .gitattributes
+git add path/to/your/largefile.zip
+git commit -m "Add large file with Git LFS"
+git push origin main
+```
