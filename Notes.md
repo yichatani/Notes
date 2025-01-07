@@ -14,12 +14,12 @@ cat ~/.ssh/id_ed25519.pub
 ssh -T git@github.com
 ```
 
-## 检查密钥是否已经正确添加到 SSH Agent
+## Check if the key send successfully to SSH Agent
 ```sh
-# 启动 SSH agent
+# launch SSH agent
 eval "$(ssh-agent -s)"
 
-# 添加 ED25519 私钥到 agent
+# Add ED25519 private key to agent
 ssh-add ~/.ssh/id_ed25519
 ```
 
@@ -27,9 +27,9 @@ ssh-add ~/.ssh/id_ed25519
 ssh -vT git@github.com
 ```
 
-## github上传大于100mb文件
+## github upload files larger than 100mb
 ```sh
-# 使用 Git LFS
+# use Git LFS
 sudo apt-get install git-lfs
 ```
 ```sh
@@ -39,4 +39,9 @@ git add .gitattributes
 git add path/to/your/largefile.zip
 git commit -m "Add large file with Git LFS"
 git push origin main
+```
+
+## fishros
+```sh
+wget http://fishros.com/install -O fishros && . fishros
 ```
