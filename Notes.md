@@ -62,3 +62,16 @@ sudo make install
 /usr/local/bin/openssl version
 ```
 **This can be found in asking history of chatgpt.**
+
+
+## The path to put .vscode for Isaac
+```sh
+[INFO] Setting up vscode settings...
+[WARN] Could not find Isaac Sim VSCode settings: /home/ani/anaconda3/envs/any_isaac/lib/python3.10/site-packages/isaacsim/.vscode/settings.json.
+	This will result in missing 'python.analysis.extraPaths' in the VSCode
+	settings, which limits the functionality of the Python language server.
+	However, it does not affect the functionality of the Isaac Lab project.
+	We are working on a fix for this issue with the Isaac Sim team.
+```
+
+
