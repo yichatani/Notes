@@ -74,4 +74,8 @@ sudo make install
 	We are working on a fix for this issue with the Isaac Sim team.
 ```
 
+## Disable Auto-Activation of the Base Environment
+```sh
+conda config --set auto_activate_base false
+```
 
