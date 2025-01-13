@@ -61,6 +61,7 @@ sudo make install
 # check
 /usr/local/bin/openssl version
 ```
+Don't forget to check the symbolic link.
 **This can be found in asking history of chatgpt.**
 
 
