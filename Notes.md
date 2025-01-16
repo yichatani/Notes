@@ -79,4 +79,8 @@ Don't forget to check the symbolic link.
 ```sh
 conda config --set auto_activate_base false
 ```
+----
 
+```sh
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/ur_grasp_driver/yc_ws/install/my_ur_driver/share
+```
