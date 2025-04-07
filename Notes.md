@@ -1,3 +1,10 @@
+## python tips: 
+### clean env:
+```python
+import sys
+sys.path = [p for p in sys.path if "isaac-sim" not in p]
+```
+
 ## CREATE SSH KEY:
 ```sh
 ls -al ~/.ssh
@@ -84,3 +91,4 @@ conda config --set auto_activate_base false
 ```sh
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/ur_grasp_driver/yc_ws/install/my_ur_driver/share
 ```
+
