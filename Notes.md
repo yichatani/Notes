@@ -5,6 +5,12 @@ import sys
 sys.path = [p for p in sys.path if "isaac-sim" not in p]
 ```
 
+## 软链接 modulefinder.py 到你的虚拟环境中
+```python
+ln -s /home/ani/.local/share/ov/pkg/isaac-sim-4.2.0/kit/python/lib/python3.10/modulefinder.py \
+      /home/ani/isaac_env/lib/python3.10/modulefinder.py
+```
+
 ## CREATE SSH KEY:
 ```sh
 ls -al ~/.ssh
