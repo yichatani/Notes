@@ -1,5 +1,13 @@
-## python tips: 
-### clean env:
+## Python tips: 
+
+### 1. Reinforce updating to a new version regardless of the outside
+```python
+source /home/ani/policy_env/bin/activate
+pip install --upgrade pip
+pip install --upgrade --force-reinstall --no-cache-dir plotly
+```
+
+### 2. Clean sys path:
 ```python
 import sys
 sys.path = [p for p in sys.path if "isaac-sim" not in p]
