@@ -9,6 +9,7 @@ tmux new -s gru_ag   -d "python main.py --model gru --epochs 8"
 
 tmux ls
 tmux attach -t bert_bin
+tmux kill-session -t bert_bin
 ```
 
 ### 2. Reinforce updating to a new version regardless of the outside
