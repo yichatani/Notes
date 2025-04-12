@@ -1,13 +1,24 @@
 ## Python tips: 
 
-### 1. Reinforce updating to a new version regardless of the outside
+### 3. tmux
+```python
+tmux new -s bert_bin -d "python main.py --model bert --binary --epochs 3"
+tmux new -s bert_ag  -d "python main.py --model bert --epochs 2"
+tmux new -s gru_bin  -d "python main.py --model gru --binary --epochs 6"
+tmux new -s gru_ag   -d "python main.py --model gru --epochs 8"
+
+tmux ls
+tmux attach -t bert_bin
+```
+
+### 2. Reinforce updating to a new version regardless of the outside
 ```python
 source /home/ani/policy_env/bin/activate
 pip install --upgrade pip
 pip install --upgrade --force-reinstall --no-cache-dir plotly
 ```
 
-### 2. Clean sys path:
+### 1. Clean sys path:
 ```python
 import sys
 sys.path = [p for p in sys.path if "isaac-sim" not in p]
