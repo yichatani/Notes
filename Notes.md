@@ -1,5 +1,14 @@
 ## Python tips: 
 
+### 4. python_env: as a way to isolate the env.
+```bash
+vim ~/.bashrc
+alias python_env="PYTHONPATH=/home/ani/policy_env/lib/python3.10/site-packages:$PYTHONPATH /home/ani/policy_env/bin/python"
+```
+```python
+python_env scripts.py
+```
+
 ### 3. tmux
 ```python
 tmux new -s bert_bin -d "python main.py --model bert --binary --epochs 3"
