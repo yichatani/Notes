@@ -1,2 +1,1 @@
-# Read [Ideas](./Ideas.md) 
-# Read [Notes](./Notes.md)
+# [Notes](./Notes.md) | [Ideas](./Ideas.md)
