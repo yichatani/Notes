@@ -34,17 +34,21 @@ import sys
 sys.path = [p for p in sys.path if "isaac-sim" not in p]
 ```
 
-## “找不到渲染设备”
-后通过更新显卡驱动解决。
+---
+
+## Other Notes:
+
+### Can't find device for rendering
+Update and change nvidia driver to solve it. 
 
 
-## 软链接 modulefinder.py 到你的虚拟环境中
+### linux ln modulefinder.py to env
 ```python
 ln -s /home/ani/.local/share/ov/pkg/isaac-sim-4.2.0/kit/python/lib/python3.10/modulefinder.py \
       /home/ani/isaac_env/lib/python3.10/modulefinder.py
 ```
 
-## CREATE SSH KEY:
+### Create ssh key:
 ```sh
 ls -al ~/.ssh
 ```
@@ -55,12 +59,12 @@ ssh-keygen -t ed25519 -C "yichatma@gmail.com"
 cat ~/.ssh/id_ed25519.pub
 ```
 
-## TEST SSH CONNECTION
+### Test ssh connection
 ```sh
 ssh -T git@github.com
 ```
 
-## Check if the key send successfully to SSH Agent
+### Check if the key is sent successfully to ssh Agent
 ```sh
 # launch SSH agent
 eval "$(ssh-agent -s)"
@@ -73,7 +77,7 @@ ssh-add ~/.ssh/id_ed25519
 ssh -vT git@github.com
 ```
 
-## github upload files larger than 100mb
+### github upload files larger than 100mb
 ```sh
 # use Git LFS
 sudo apt-get install git-lfs
@@ -87,12 +91,12 @@ git commit -m "Add large file with Git LFS"
 git push origin main
 ```
 
-## fishros
+### fishros
 ```sh
 wget http://fishros.com/install -O fishros && . fishros
 ```
 
-## Error: ./license_checker: error while loading shared libraries: libcrypto.so.1.1: cannot open shared object file: No such file or directory
+### Error: ./license_checker: error while loading shared libraries: libcrypto.so.1.1: cannot open shared object file: No such file or directory
  ```sh
 ldd ./license_checker
 ```
@@ -111,7 +115,7 @@ Don't forget to check the symbolic link.
 **This can be found in asking history of chatgpt.**
 
 
-## The path to put .vscode for Isaac
+### The path to put .vscode for Isaac
 ```sh
 [INFO] Setting up vscode settings...
 [WARN] Could not find Isaac Sim VSCode settings: /home/ani/anaconda3/envs/any_isaac/lib/python3.10/site-packages/isaacsim/.vscode/settings.json.
@@ -121,7 +125,7 @@ Don't forget to check the symbolic link.
 	We are working on a fix for this issue with the Isaac Sim team.
 ```
 
-## Disable Auto-Activation of the Base Environment
+### Disable Auto-Activation of the Base Environment
 ```sh
 conda config --set auto_activate_base false
 ```
