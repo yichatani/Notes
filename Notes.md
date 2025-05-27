@@ -34,6 +34,10 @@ import sys
 sys.path = [p for p in sys.path if "isaac-sim" not in p]
 ```
 
+## “找不到渲染设备”
+后通过更新显卡驱动解决。
+
+
 ## 软链接 modulefinder.py 到你的虚拟环境中
 ```python
 ln -s /home/ani/.local/share/ov/pkg/isaac-sim-4.2.0/kit/python/lib/python3.10/modulefinder.py \
