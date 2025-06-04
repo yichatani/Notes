@@ -41,7 +41,19 @@ sys.path = [p for p in sys.path if "isaac-sim" not in p]
 
 ### Solve the problem of github account name error
 
-![account_error](.images/account_error.png)
+```bash
+# global
+git config --global user.name "Your Name"
+git config --global user.email "your_email@example.com"
+
+# local 
+git config user.name "Your Name"
+git config user.email "your_email@example.com"
+
+git commit --amend --reset-author
+```
+
+![account_error](./images/account_error.png)
 
 
 ### Can't find device for rendering
