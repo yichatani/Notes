@@ -38,6 +38,12 @@ sys.path = [p for p in sys.path if "isaac-sim" not in p]
 
 ## Other Notes:
 
+
+### Solve the problem of github account name error
+
+![account_error](.images/account_error.png)
+
+
 ### Can't find device for rendering
 Update and change nvidia driver to solve it. 
 
