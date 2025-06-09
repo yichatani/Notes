@@ -1,5 +1,10 @@
 ## Python tips: 
 
+### Output env requirement.txt
+```bash
+pip freeze > requirements.txt
+```
+
 ### 5. Isolate env, write the below code in the activate file.
 ```bash
 export PYTHONNOUSERSITE=1
