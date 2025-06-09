@@ -1,5 +1,11 @@
 ## Python tips: 
 
+### 5. Isolate env, write the below code in the activate file.
+```bash
+export PYTHONNOUSERSITE=1
+export PYTHONPATH=""
+```
+
 ### 4. python_env: as a way to isolate the env.
 ```bash
 vim ~/.bashrc
