@@ -1,6 +1,6 @@
 ## Python tips: 
 
-### Output env requirement.txt
+### Output env requirements.txt
 ```bash
 pip freeze > requirements.txt
 ```
