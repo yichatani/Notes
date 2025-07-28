@@ -1,6 +1,11 @@
 ## Python tips: 
 
-### Output env requirements.txt
+### 7. Create venv environment
+```bash
+python -m venv latent_env
+```
+
+### 6. Output env requirements.txt
 ```bash
 pip freeze > requirements.txt
 ```
