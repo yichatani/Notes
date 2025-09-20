@@ -1,1 +1,1 @@
-# [Notes](./Notes.md) | [Ideas](./Ideas.md)
+# [Notes](./Notes.md)
