@@ -1,4 +1,4 @@
-## Python tips: 
+## I. Python tips: 
 
 ### 7. Create venv environment
 ```bash
@@ -52,10 +52,24 @@ sys.path = [p for p in sys.path if "isaac-sim" not in p]
 
 ---
 
-## Other Notes:
+
+## II. Other Notes:
 
 
-### Solve the problem of github account name error
+### 12. Compress Video and PDF files
+
+```bash
+# Video
+ffmpeg -i icra_pre.mp4 -vcodec libx264 -crf 18 -preset slow -acodec aac icra_video.mp4
+
+# PDF
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+   -dDownsampleColorImages=false \
+   -dNOPAUSE -dQUIET -dBATCH \
+   -sOutputFile=3D_LOT_nodownsample.pdf 3D_LOT.pdf
+```
+
+### 11. Solve the problem of github account name error
 
 ```bash
 # global
@@ -69,20 +83,20 @@ git config user.email "your_email@example.com"
 git commit --amend --reset-author
 ```
 
-![account_error](./images/account_error.png)
+<img src="./images/account_error.png" alt="account_error" width="400"/>
 
 
-### Can't find device for rendering
+### 10. Can't find device for rendering
 Update and change nvidia driver to solve it. 
 
 
-### linux ln modulefinder.py to env
+### 9. linux ln modulefinder.py to env
 ```python
 ln -s /home/ani/.local/share/ov/pkg/isaac-sim-4.2.0/kit/python/lib/python3.10/modulefinder.py \
       /home/ani/isaac_env/lib/python3.10/modulefinder.py
 ```
 
-### Create ssh key:
+### 8. Create ssh key:
 ```sh
 ls -al ~/.ssh
 ```
@@ -93,12 +107,12 @@ ssh-keygen -t ed25519 -C "yichatma@gmail.com"
 cat ~/.ssh/id_ed25519.pub
 ```
 
-### Test ssh connection
+### 7. Test ssh connection
 ```sh
 ssh -T git@github.com
 ```
 
-### Check if the key is sent successfully to ssh Agent
+### 6. Check if the key is sent successfully to ssh Agent
 ```sh
 # launch SSH agent
 eval "$(ssh-agent -s)"
@@ -111,7 +125,7 @@ ssh-add ~/.ssh/id_ed25519
 ssh -vT git@github.com
 ```
 
-### github upload files larger than 100mb
+### 5. github upload files larger than 100mb
 ```sh
 # use Git LFS
 sudo apt-get install git-lfs
@@ -125,12 +139,12 @@ git commit -m "Add large file with Git LFS"
 git push origin main
 ```
 
-### fishros
+### 4. fishros
 ```sh
 wget http://fishros.com/install -O fishros && . fishros
 ```
 
-### Error: ./license_checker: error while loading shared libraries: libcrypto.so.1.1: cannot open shared object file: No such file or directory
+### 3. Error: ./license_checker: error while loading shared libraries: libcrypto.so.1.1: cannot open shared object file: No such file or directory
  ```sh
 ldd ./license_checker
 ```
@@ -149,7 +163,7 @@ Don't forget to check the symbolic link.
 **This can be found in asking history of chatgpt.**
 
 
-### The path to put .vscode for Isaac
+### 2. The path to put .vscode for Isaac
 ```sh
 [INFO] Setting up vscode settings...
 [WARN] Could not find Isaac Sim VSCode settings: /home/ani/anaconda3/envs/any_isaac/lib/python3.10/site-packages/isaacsim/.vscode/settings.json.
@@ -159,7 +173,7 @@ Don't forget to check the symbolic link.
 	We are working on a fix for this issue with the Isaac Sim team.
 ```
 
-### Disable Auto-Activation of the Base Environment
+### 1. Disable Auto-Activation of the Base Environment
 ```sh
 conda config --set auto_activate_base false
 ```
