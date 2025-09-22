@@ -10,6 +10,10 @@ export OLD_PYTHONPATH=$PYTHONPATH
 export PYTHONPATH=/home/ani/reinflow_env/lib/python3.8/site-packages
 
 echo "PYTHONPATH set to reinflow_env."
+
+export CUDA_HOME=/usr/local/cuda-11.8
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 ```
 
 ### 7. Create a venv environment
