@@ -1,6 +1,18 @@
 ## I. Python tips: 
 
-### 7. Create venv environment
+### 8. Force Python to use only the env's site-packages
+```bash
+# Write the code below in the activate file.
+# Backup the original PYTHONPATH
+export OLD_PYTHONPATH=$PYTHONPATH
+
+# Force Python to use only dp3_env's site-packages
+export PYTHONPATH=/home/ani/reinflow_env/lib/python3.8/site-packages
+
+echo "PYTHONPATH set to reinflow_env."
+```
+
+### 7. Create a venv environment
 ```bash
 python -m venv latent_env
 ```
@@ -10,13 +22,13 @@ python -m venv latent_env
 pip freeze > requirements.txt
 ```
 
-### 5. Isolate env, write the below code in the activate file.
+### 5. Isolate env, write the code below in the activate file
 ```bash
 export PYTHONNOUSERSITE=1
 export PYTHONPATH=""
 ```
 
-### 4. python_env: as a way to isolate the env.
+### 4. python_env: as a way to isolate the env
 ```bash
 vim ~/.bashrc
 alias python_env="PYTHONPATH=/home/ani/policy_env/lib/python3.10/site-packages:$PYTHONPATH /home/ani/policy_env/bin/python"
@@ -27,6 +39,9 @@ python_env scripts.py
 
 ### 3. tmux
 ```python
+tmux new -s newsession
+tmux attach -t newsession
+
 tmux new -s bert_bin -d "python main.py --model bert --binary --epochs 3"
 tmux new -s bert_ag  -d "python main.py --model bert --epochs 2"
 tmux new -s gru_bin  -d "python main.py --model gru --binary --epochs 6"
@@ -44,7 +59,7 @@ pip install --upgrade pip
 pip install --upgrade --force-reinstall --no-cache-dir plotly
 ```
 
-### 1. Clean sys path:
+### 1. Clean sys path
 ```python
 import sys
 sys.path = [p for p in sys.path if "isaac-sim" not in p]
@@ -96,7 +111,7 @@ ln -s /home/ani/.local/share/ov/pkg/isaac-sim-4.2.0/kit/python/lib/python3.10/mo
       /home/ani/isaac_env/lib/python3.10/modulefinder.py
 ```
 
-### 8. Create ssh key:
+### 8. Create ssh key
 ```sh
 ls -al ~/.ssh
 ```
@@ -107,12 +122,12 @@ ssh-keygen -t ed25519 -C "yichatma@gmail.com"
 cat ~/.ssh/id_ed25519.pub
 ```
 
-### 7. Test ssh connection
+### 7. Test the SSH connection
 ```sh
 ssh -T git@github.com
 ```
 
-### 6. Check if the key is sent successfully to ssh Agent
+### 6. Check if the key is sent successfully to the SSH Agent
 ```sh
 # launch SSH agent
 eval "$(ssh-agent -s)"
@@ -160,7 +175,7 @@ sudo make install
 /usr/local/bin/openssl version
 ```
 Don't forget to check the symbolic link.
-**This can be found in asking history of chatgpt.**
+**This can be found in asking the history of ChatGPT.**
 
 
 ### 2. The path to put .vscode for Isaac
