@@ -9,7 +9,8 @@
 4. [python_env: as a way to isolate the env](./Notes.md#4-python_env-as-a-way-to-isolate-the-env)  
 5. [Isolate env via activate file](./Notes.md#5-isolate-env-write-the-below-code-in-the-activate-file)  
 6. [Output env requirements.txt](./Notes.md#6-output-env-requirementstxt)  
-7. [Create venv environment](./Notes.md#7-create-venv-environment)  
+7. [Create venv environment](./Notes.md#7-create-venv-environment)
+8. [Force Python to use only the env's site-packages](./Notes.md#8-force-python-site-packages) 
 
 ### II. Other Notes
 1. [Disable Auto-Activation of the Base Environment](./Notes.md#1-disable-auto-activation-of-the-base-environment)  
