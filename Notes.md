@@ -74,12 +74,14 @@ sys.path = [p for p in sys.path if "isaac-sim" not in p]
 
 ## II. Other Notes:
 
-### 13. Hugging Face related
+### 13. Hugging Face
 ```bash
 hf auth login
 hf auth logout
 hf auth whoami
 hf repo create my_smolvla --type=model
+
+hf upload yichat/my_smolvla .
 ```
 
 ### 12. Compress Video and PDF files
