@@ -24,5 +24,6 @@
 9. [linux ln modulefinder.py to env](./Notes.md#9-linux-ln-modulefinderpy-to-env)  
 10. [Can't find device for rendering](./Notes.md#10-cant-find-device-for-rendering)  
 11. [GitHub account name error](./Notes.md#11-solve-the-problem-of-github-account-name-error)  
-12. [Compress Video and PDF files](./Notes.md#12-compress-video-and-pdf-files)  
+12. [Compress Video and PDF files](./Notes.md#12-compress-video-and-pdf-files)
+13. [Hugging Face](./Notes.md#13-hugging-face)  
  
