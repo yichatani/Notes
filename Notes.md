@@ -1,6 +1,6 @@
 ## I. Python tips: 
 
-### 8. Force Python to use only the env's site-packages
+### 8. Force Python to use only the env site-packages
 ```bash
 # Write the code below in the activate file.
 # Backup the original PYTHONPATH
