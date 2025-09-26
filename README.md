@@ -18,7 +18,7 @@
 3. [libcrypto.so.1.1 error (license_checker)](./Notes.md#3-error-license_checker-error-while-loading-shared-libraries-libcryptoso11-cannot-open-shared-object-file-no-such-file-or-directory)  
 4. [fishros](./Notes.md#4-fishros)  
 5. [GitHub upload files > 100MB (Git LFS)](./Notes.md#5-github-upload-files-larger-than-100mb)  
-6. [Check if SSH key is sent successfully to Agent](./Notes.md#6-check-if-the-key-is-sent-successfully-to-ssh-agent)  
+6. [Check if SSH key is sent successfully to Agent](./Notes.md#6-check-if-the-key-is-sent-successfully-to-the-ssh-agent)  
 7. [Test the SSH connection](./Notes.md#7-test-the-ssh-connection)  
 8. [Create SSH key](./Notes.md#8-create-ssh-key)  
 9. [linux ln modulefinder.py to env](./Notes.md#9-linux-ln-modulefinderpy-to-env)  
