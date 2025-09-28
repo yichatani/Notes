@@ -74,6 +74,23 @@ sys.path = [p for p in sys.path if "isaac-sim" not in p]
 
 ## II. Other Notes:
 
+### 14. Github
+```bash
+git fetch origin
+git checkout -b branch
+git diff main origin/main
+git add .
+git commit -m "Messages."
+git push
+git push origin branch
+
+git remote remove origin
+git remote add origin https://huggingface.co/datasets/yichat/smol-libero
+
+git pull
+git pull origin branch
+```
+
 ### 13. Hugging Face
 ```bash
 hf auth login
@@ -82,6 +99,16 @@ hf auth whoami
 hf repo create my_smolvla --type=model
 
 hf upload yichat/my_smolvla .
+
+hf repo create yichat/smol-libero --repo-type dataset
+cd ~/smol-libero
+git init
+git lfs install
+git remote add origin https://huggingface.co/datasets/yichat/smol-libero
+git checkout -b v2.1
+git add .
+git commit -m "upload smol-libero v2.1 dataset"
+git push origin v2.1
 ```
 
 ### 12. Compress Video and PDF files
