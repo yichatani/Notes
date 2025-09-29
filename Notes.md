@@ -74,6 +74,12 @@ sys.path = [p for p in sys.path if "isaac-sim" not in p]
 
 ## II. Other Notes:
 
+### 15. LIBERO rendering problem
+```bash
+# change mujoco version
+mujoco 2.3.7 -> 3.3.6
+```
+
 ### 14. Github
 ```bash
 git fetch origin
