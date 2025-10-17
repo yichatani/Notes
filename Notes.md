@@ -74,6 +74,38 @@ sys.path = [p for p in sys.path if "isaac-sim" not in p]
 
 ## II. Other Notes:
 
+### 16. FRANKA Static IP wirse
+```bash
+# You can connect to the Internet via WiFi and control Franka via a wired connection.
+# Your computer has two network interfaces:
+# wlo1 → wireless network card (WiFi, for internet access)
+# enp5s0 → wired network card (connected to the Franka control cabinet)
+# The problem is:
+# When a system has two networks, Linux will default to one "default route," potentially ignoring the other.
+# So, we need to tell the system:
+# Internet traffic should go via WiFi;
+# Traffic destined for Franka (172.16.0.2) should go via the wired network.
+
+# 1. Make sure your WiFi is connected (Internet access)
+nmcli radio wifi on
+
+# 2. Manually configure a static IP for the wired network card (if not already configured)
+sudo nmcli con add type ethernet ifname enp5s0 con-name franka \ ipv4.addresses 172.16.0.1/24 ipv4.method manual autoconnect yes
+
+# 3. Start the connection
+sudo nmcli con up franka
+
+# 4. Add a static route to the Franka network segment
+sudo ip route add 172.16.0.0/24 dev enp5s0
+
+# 5. Check
+ip route
+
+# 6. Permanently (Exists when restart.)
+sudo nmcli connection modify franka +ipv4.routes "172.16.0.0/24 0.0.0.0"
+sudo nmcli connection up franka
+```
+
 ### 15. LIBERO rendering problem
 ```bash
 # change mujoco version
