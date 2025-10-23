@@ -74,6 +74,11 @@ sys.path = [p for p in sys.path if "isaac-sim" not in p]
 
 ## II. Other Notes:
 
+### 17. Downgrade huggingface version
+```bash
+pip install huggingface_hub==0.10.0
+```
+
 ### 16. FRANKA Static IP wirse
 ```bash
 # You can connect to the Internet via WiFi and control Franka via a wired connection.
