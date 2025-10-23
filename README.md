@@ -28,4 +28,5 @@
 13. [Hugging Face](./Notes.md#13-hugging-face)
 14. [Github](./Notes.md#14-github)
 15. [LIBERO rendering problem](./Notes.md#15-libero-rendering-problem)
- 
+16. [FRANKA Static IP wirse](./Notes.md#16-franka-static-ip-wirse)
+17. [Downgrade huggingface version](./Notes.md#17-downgrade-huggingface-version)
