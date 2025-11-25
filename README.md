@@ -30,3 +30,4 @@
 15. [LIBERO rendering problem](./Notes.md#15-libero-rendering-problem)
 16. [FRANKA Static IP wirse](./Notes.md#16-franka-static-ip-wirse)
 17. [Downgrade huggingface version](./Notes.md#17-downgrade-huggingface-version)
+18. [Set nvcc (CUDA Toolkit Path)](./Notes.md#18-set-nvcc-cuda-toolkit-path)
