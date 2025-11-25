@@ -74,6 +74,16 @@ sys.path = [p for p in sys.path if "isaac-sim" not in p]
 
 ## II. Other Notes:
 
+### 18. Set nvcc (CUDA Toolkit Path)
+```bash
+vim ~/.bashrc
+
+# Add
+export CUDA_HOME=/usr/local/cuda-12.1
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+```
+
 ### 17. Downgrade huggingface version
 ```bash
 pip install huggingface_hub==0.10.0
