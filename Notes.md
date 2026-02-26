@@ -74,6 +74,114 @@ sys.path = [p for p in sys.path if "isaac-sim" not in p]
 
 ## II. Other Notes:
 
+### 19. Ubuntu实时内核（RT Kernel）延迟调优
+
+**环境：** Ubuntu + Linux 5.15.x PREEMPT_RT，用于机器人控制（1000Hz）
+
+#### 问题症状
+
+运行 `cyclictest` 后发现最大延迟（Max）高达 **16ms**，平均延迟也在 1.5ms 以上，不满足实时控制要求。
+
+```
+T: 0 P:99 I:1000  Min: 1217  Avg: 1633  Max: 16346   ← 异常
+T: 1 P:99 I:1500  Min: 1196  Avg: 1539  Max:  8824
+```
+
+**根本原因：** CPU 频率调节器默认为 `powersave`，导致 CPU 频率动态变化，引入大量延迟抖动。
+
+#### 诊断步骤
+
+```bash
+# 1. 确认是 PREEMPT_RT 内核（输出中应包含 PREEMPT_RT）
+uname -a
+
+# 2. 检查 CPU 频率调节器（问题状态：powersave，目标状态：performance）
+cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+# 3a. 初始诊断（不限时，手动 Ctrl+C 停止）
+sudo cyclictest -p99 -t -i1000
+
+# 3b. 完整基准测试（运行 30 秒，锁内存）
+sudo cyclictest -p99 -t4 -i1000 -D 30s -m
+```
+
+#### 修复步骤
+
+```bash
+# Step 1：设置 CPU 为 performance 模式
+# RT 内核没有对应的 linux-tools 包，直接用 sysfs
+for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
+    echo performance | sudo tee $cpu
+done
+
+# Step 2：禁用深度 C-states（节能休眠状态，唤醒时引入延迟）
+for state in /sys/devices/system/cpu/cpu*/cpuidle/state[1-9]/disable; do
+    echo 1 | sudo tee $state 2>/dev/null
+done
+
+# Step 3：验证效果
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor  # 应输出 performance
+sudo cyclictest -p99 -t4 -i1000 -D 30s -m                 # Max 应在个位数 µs
+```
+
+修复后结果：
+```
+T: 0 P:99 I:1000  Min: 1  Avg: 1  Max:  6   ← 正常
+T: 1 P:99 I:1500  Min: 1  Avg: 1  Max:  4
+```
+
+#### 永久生效（重启后自动应用）
+
+```bash
+sudo tee /etc/systemd/system/rt-tuning.service << 'EOF'
+[Unit]
+Description=RT Kernel Tuning
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'for f in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do echo performance > $f; done; for f in /sys/devices/system/cpu/cpu*/cpuidle/state[1-9]/disable; do echo 1 > $f 2>/dev/null; done'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl enable rt-tuning.service
+sudo systemctl start rt-tuning.service
+
+# 重启后验证
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor  # 应为 performance
+sudo cyclictest -p99 -t4 -i1000 -D 10s -m                 # Max 应在个位数 µs
+```
+
+#### 延迟标准参考
+
+| Max 延迟 | 评价 |
+|----------|------|
+| < 50 µs  | 优秀，适合机器人实时控制 |
+| < 200 µs | 可用 |
+| > 1 ms   | 需要排查 |
+| > 5 ms   | 不可用 |
+
+#### 其他可选优化（如仍有问题）
+
+```bash
+# 隔离 CPU 核心（在 /etc/default/grub 的 GRUB_CMDLINE_LINUX 中添加）
+# isolcpus=2,3 nohz_full=2,3 rcu_nocbs=2,3
+# 然后：sudo update-grub && reboot，cyclictest 用 -a 2,3 指定隔离核
+
+# 关闭超线程（HT）
+echo off | sudo tee /sys/devices/system/cpu/smt/control
+
+# 检查 SMI（周期性 8~16ms 尖峰可能是 BIOS 触发，内核无法屏蔽）
+sudo turbostat --show smi --interval 1
+# 若 SMI 频繁，在 BIOS 中禁用 ACPI Thermal、USB legacy 等功能
+
+# 完整 GRUB 推荐参数
+# GRUB_CMDLINE_LINUX="preempt=full threadirqs isolcpus=2,3 nohz_full=2,3 rcu_nocbs=2,3 intel_idle.max_cstate=1 processor.max_cstate=1 nosoftlockup"
+```
+
 ### 18. Set nvcc (CUDA Toolkit Path)
 ```bash
 vim ~/.bashrc
@@ -191,9 +299,6 @@ git config user.email "your_email@example.com"
 git commit --amend --reset-author
 ```
 
-<img src="./images/account_error.png" alt="account_error" width="400"/>
-
-
 ### 10. Can't find device for rendering
 Update and change nvidia driver to solve it. 
 
@@ -290,4 +395,3 @@ conda config --set auto_activate_base false
 ```sh
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:~/ur_grasp_driver/yc_ws/install/my_ur_driver/share
 ```
-
