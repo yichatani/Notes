@@ -74,6 +74,43 @@ sys.path = [p for p in sys.path if "isaac-sim" not in p]
 
 ## II. Other Notes:
 
+### 20. 如果sudo apt不断有冲突，比如k4a-tools
+```bash
+您也许需要运行“apt --fix-broken install”来修正上面的错误。
+下列软件包有未满足的依赖关系：
+ k4a-tools : 依赖: libk4a1.4 (= 1.4.2) 但是它将不会被安装
+E: 有未能满足的依赖关系。请尝试不指明软件包的名字来运行“apt --fix-broken install”(也可以指定一个解决办法)。
+正在读取软件包列表... 完成
+正在分析软件包的依赖关系树       
+正在读取状态信息... 完成       
+您也许需要运行“apt --fix-broken install”来修正上面的错误。
+下列软件包有未满足的依赖关系：
+ k4a-tools : 依赖: libk4a1.4 (= 1.4.2) 但是它将不会被安装
+ libmotif-dev : 依赖: libmrm4 (= 2.3.8-2build1) 但是它将不会被安装
+                依赖: libuil4 (= 2.3.8-2build1) 但是它将不会被安装
+                依赖: libxm4 (= 2.3.8-2build1) 但是它将不会被安装
+                依赖: uil (= 2.3.8-2build1) 但是它将不会被安装
+E: 有未能满足的依赖关系。请尝试不指明软件包的名字来运行“apt --fix-broken install”(也可以指定一个解决办法)。
+```
+```bash
+正在预设定软件包 ...
+(正在读取数据库 ... 系统当前共安装有 296779 个文件和目录。)
+准备解压 .../libk4a1.4_1.4.2_amd64.deb  ...
+正在解压 libk4a1.4 (1.4.2) ...
+dpkg: 处理归档 /var/cache/apt/archives/libk4a1.4_1.4.2_amd64.deb (--unpack)时出错：
+ 正试图覆盖 /usr/lib/x86_64-linux-gnu/libk4a.so，它同时被包含于软件包 libk4a1.3 1.3.0
+在处理时有错误发生：
+ /var/cache/apt/archives/libk4a1.4_1.4.2_amd64.deb
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+```
+
+那么，可以直接把 k4a-tools 移除，保留你的 1.3：
+```bash
+sudo apt remove k4a-tools
+sudo apt --fix-broken install
+```
+这样依赖冲突就解除了，libk4a1.3 继续保留，不影响你原来的相机使用。
+
 ### 19. Ubuntu实时内核（RT Kernel）延迟调优
 
 **环境：** Ubuntu + Linux 5.15.x PREEMPT_RT，用于机器人控制（1000Hz）
