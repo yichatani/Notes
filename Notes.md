@@ -1,5 +1,12 @@
 ## I. Python tips: 
 
+### 9. uv
+```bash
+uv venv --python 3.10
+source .venv/bin/activate
+uv pip install -r requirements.txt
+```
+
 ### 8. Force Python to use only the env site-packages
 ```bash
 # Write the code below in the activate file.
